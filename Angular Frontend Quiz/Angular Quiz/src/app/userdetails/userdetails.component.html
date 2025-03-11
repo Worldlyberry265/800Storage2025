@@ -1,0 +1,30 @@
+<div *ngIf="!isLoading" class="card__container">
+
+    <div *ngIf="user; else userNotFound" class="card__wrapper">
+        <div class="card__side card__side--front">
+            <img class="card__details--avatar" [src]="user.avatar" alt="Avatar_Image">
+
+            <span class="card__details--label">ID</span>
+            <span class="card__details--value">{{user.id}}</span>
+            <span class="card__details--label">First Name</span>
+            <span class="card__details--value">{{user.first_name}}</span>
+            <span class="card__details--label">Last Name</span>
+            <span class="card__details--value">{{user.last_name}}</span>
+
+            <a class="GoBackButton" routerLink="'/userslist'">Go Back</a>
+
+        </div>
+
+        <div class="card__side card__side--back">
+            <span class="GoBackButton--text">Press To Naviagte</span>
+            <a class="GoBackButton" routerLink="'/userslist'">Go Back</a>
+        </div>
+    </div>
+
+    <ng-template #userNotFound>
+        <div class="card__not-found">
+            <p class="card__not-found--text">User Not Found</p>
+            <a class="GoBackButton" routerLink="/userslist">Go Back</a>
+        </div>
+    </ng-template>
+</div>

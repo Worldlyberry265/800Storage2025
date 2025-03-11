@@ -1,0 +1,149 @@
+.card {
+  &__container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__wrapper {
+    position: relative;
+    perspective: 150rem;
+    min-height: 48rem;
+    min-width: 25rem;
+  }
+
+  &__side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    background-color: white;
+    box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+    border-radius: 0.5rem;
+    text-align: center;
+
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    width: 100%;
+
+    @media (min-width: 56.25em) {
+      height: 100%;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--front {
+      a {
+        @media (min-width: 56.25em) {
+          display: none;
+        } //900px
+      }
+    }
+  }
+
+  @media (min-width: 56.25em) {
+    &__wrapper:hover &__side--front {
+      transform: rotateY(-180deg);
+    }
+
+    &__wrapper:hover &__side--back {
+      transform: rotateY(0);
+    }
+  }
+
+  &__details {
+    &--avatar {
+      border-radius: 50%;
+      width: 10rem;
+      height: 10rem;
+      margin-bottom: 2rem;
+    }
+
+    &--label {
+      font-size: 3rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid black;
+      }
+    }
+
+    &--value {
+      font-size: 2rem;
+      font-weight: 300;
+
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__not-found {
+    font-size: 3rem;
+    padding: 4rem;
+    background-color: white;
+    box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+    border-radius: 0.5rem;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40rem;
+
+    &--text {
+      padding: 0rem;
+    }
+  }
+}
+
+.GoBackButton {
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  @media (min-width: 56.25em) {
+    width: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    background-color: white;
+    color: black;
+    font-weight: 700;
+  }
+
+  &:active,
+  &:visited {
+    transform: scale(1);
+  }
+
+  &--text {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+}

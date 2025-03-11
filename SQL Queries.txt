@@ -1,0 +1,57 @@
+1)CREATE DATABASE newstorage800
+
+2)Use Database newstorage800
+
+3)Creating the Tables:
+
+Products:
+CREATE TABLE Products(
+id INT PRIMARY KEY AUTO_INCREMENT,
+prod_name VARCHAR(50) NOT NULL,
+descrip TEXT,
+category VARCHAR(30) NOT NULL,
+creation_date TIMESTAMP NOT NULL
+);
+
+Clients:
+CREATE TABLE Clients(
+id INT PRIMARY KEY AUTO_INCREMENT,
+firstname VARCHAR(50) NOT NULL,
+lastname VARCHAR(50) NOT NULL,
+mobile VARCHAR (20) NOT NULL,
+UNIQUE(mobile)
+);
+
+Sales:
+CREATE TABLE Sales(
+id INT PRIMARY KEY AUTO_INCREMENT,
+client_id INT NOT NULL,
+seller_id INT NOT NULL,
+total_price FLOAT NOT NULL,
+creation_date TIMESTAMP NOT NULL,
+version INT NOT NULL,
+FOREIGN KEY (client_id) REFERENCES Clients (id)
+);
+
+
+CREATE TABLE Transactions(
+id INT PRIMARY KEY AUTO_INCREMENT,
+sale_id INT NOT NULL,
+product_id INT NOT NULL,
+quantity INT NOT NULL,
+price FLOAT NOT NULL,
+FOREIGN KEY (sale_id ) REFERENCES Sales(id),
+FOREIGN KEY (product_id) REFERENCES PRODUCTS(id)
+CONSTRAINT unique_combination UNIQUE (sale_id , product_id)
+);
+
+CREATE TABLE Transaction_Logs(
+id INT PRIMARY KEY AUTO_INCREMENT,
+transaction_id INT NOT NULL,
+old_quantity INT NOT NULL,
+new_quantity INT NOT NULL,
+old_price FLOAT NOT NULL,
+new_price FLOAT NOT NULL,
+creation_date TIMESTAMP NOT NULL,
+FOREIGN KEY (transaction_id ) REFERENCES Transactions(id),
+);
