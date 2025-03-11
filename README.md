@@ -30,6 +30,8 @@ I created a global controller advice to handle http requests errors, and a Custo
 ### Models and Records
 Alongside the custom exception class, I created the database tables as classes in a model package, and 3 records in a record in package as a DTO (Data Transfer Object), to have a good and maintainable structure for the API endpoints parameters and responses.
 
+---
+
 ## Database
 
 ### MySQL and JDBC
@@ -37,6 +39,8 @@ I used MySQL for my database and jdbc for its connection with spring boot.
 
 ### Structure
 I created 5 tables in total, and their code can be found in the SQL Queries file.
+
+---
 
 ## Class Diagram
 
